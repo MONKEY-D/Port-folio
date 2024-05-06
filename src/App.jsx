@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import "./App.scss";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "../src/components/hero/Hero";
@@ -9,6 +10,31 @@ import Cursor from "./components/cursor/Cursor";
 import Footer from "./components/footer/Footer";
 
 const App = () => {
+
+  const [showFooter, setShowFooter]=useState(false);
+  useEffect(()=>{
+    const handleScroll = () => {
+      const contactSection = document.getElementById('Contact');
+      if (!contactSection) return;
+
+      const contactSectionTop = contactSection.offsetTop;
+      const scrollPosition = window.scrollY + window.innerHeight;
+
+      if (scrollPosition > contactSectionTop) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      
+    };
+  }, []);
+
   return (
     <div>
       <Cursor />
@@ -29,7 +55,7 @@ const App = () => {
       <section id="Contact">
         <Contact />
       </section> 
-      <Footer/> 
+      {showFooter && <Footer/>} 
     </div>
   );
 };
