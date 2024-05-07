@@ -69,6 +69,12 @@
         color: #ffffff09;
         width: 50%;
         font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @include mobile {
+            font-size: 100px;
+          }
     }
 
     .imageContainer{
