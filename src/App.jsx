@@ -55,7 +55,9 @@ const App = () => {
       <section id="Contact">
         <Contact />
       </section> 
+      <div style={{marginBottom: showFooter ? '100px' : '0'}}>
       {showFooter && <Footer/>} 
+      </div> 
     </div>
   );
 };
