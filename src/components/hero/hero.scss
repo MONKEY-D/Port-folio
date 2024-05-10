@@ -69,10 +69,6 @@
         color: #ffffff09;
         width: 50%;
         font-weight: bold;
-
-        @include mobile{
-            display: none;
-        }
     }
 
     .imageContainer{
